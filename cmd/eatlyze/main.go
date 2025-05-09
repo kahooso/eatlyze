@@ -1,28 +1,26 @@
 package main
 
 import (
-	"os"
+	"eatlyze/internal/config"
+	"eatlyze/internal/router"
+	"log"
 
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	gin.SetMode(gin.ReleaseMode)
-	r := gin.Default()
 
-	r.Static("static", "static")
-	r.LoadHTMLGlob("templates/*")
-
-	r.GET("/", func(c *gin.Context) {
-		c.HTML(200, "main.html", nil)
-	})
-
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = ":8080"
-	} else {
-		port = ":" + port
+	cfg, err := config.Load()
+	if err != nil {
+		log.Fatalf("Failed to load config: %v", err)
 	}
 
-	r.Run(port)
+	r := gin.Default()
+	router.InitPublicRoutes(r)
+	router.InitApiRoutes(r)
+
+	if err := r.Run(cfg.Port); err != nil {
+		log.Fatalf("Failed to start sever: %v", err)
+	}
 }
