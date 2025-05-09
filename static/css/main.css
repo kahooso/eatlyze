@@ -1,0 +1,406 @@
+:root {
+    --sidebar-bg: whitesmoke;
+    --header-bg: whitesmoke;
+    --main-bg: #f6ffeb;
+    --quote-bg: #ffc5ed;
+    --primary: #f6abde;
+    --secondary: #c4ea9b;
+    --text-dark: #333;
+    --text-light: #555;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--text-dark);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 70px 1fr;
+    min-height: 100vh;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+header {
+    grid-column: 1 / 3;
+    background-color: var(--header-bg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    box-shadow: var(--shadow);
+    z-index: 10;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    transform: scale(0.065);
+}
+
+.sidebar {
+    background-color: var(--sidebar-bg);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nav-item {
+    width: 100%;
+    padding: 20px 0;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--text-light);
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.nav-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--text-dark);
+}
+
+.nav-item.active {
+    background-color: var(--primary);
+    color: white;
+}
+
+.nav-item i {
+    font-size: 24px;
+}
+
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 40%;
+    background-color: white;
+    border-radius: 2px 0 0 2px;
+}
+
+.divider {
+    width: 40px;
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.1);
+    margin: 15px 0;
+}
+
+.main-content {
+    padding: 40px 40px 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 40px;
+}
+
+.image-container {
+    flex: 1;
+    background: var(--quote-bg);
+    border-radius: 24px;
+    position: relative;
+    height: 450px;
+}
+
+.image-box {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: var(--transition);
+}
+
+.image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.image-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.image-box:hover img {
+    transform: scale(1.03);
+}
+
+.text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.welcome-quote {
+    background-color: var(--quote-bg);
+    padding: 4%;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-quote::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--secondary);
+    /* linear-gradient(to bottom, var(--primary), var(--secondary)) */
+}
+
+.welcome-quote h1 {
+    margin-bottom: 12px;
+    color: var(--text-dark);
+    font-weight: 700;
+    line-height: 1.3;
+    position: relative;
+}
+
+.welcome-quote p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-dark);
+    font-weight: 500;
+    max-width: 100%;
+}
+
+.motivational-quote {
+    background-color: var(--quote-bg);
+    padding: 2% 3%;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.motivational-quote .author {
+    font-weight: 700;
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.motivational-quote p {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    position: relative;
+    padding-left: 30px;
+}
+
+.motivational-quote p::before {
+    content: '"';
+    position: absolute;
+    left: 0;
+    top: -10px;
+    font-size: 3rem;
+    color: var(--primary);
+    opacity: 0.3;
+    font-family: 'Playfair Display', serif;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 20px;
+}
+
+.btn {
+    padding: 16px 32px;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background-color: var(--quote-bg);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #ff6dce;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(255, 133, 216, 0.4);
+}
+
+.btn-secondary {
+    background-color: var(--secondary);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #94d34a;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(165, 224, 101, 0.4);
+}
+
+.girl-svg,
+.boy-svg,
+.heart-svg,
+.stars-svg,
+.stars2-svg,
+.poke-webp,
+.poke2-webp {
+    position: relative;
+    width: 30%;
+    height: auto;
+}
+
+.girl-svg {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 35%;
+    z-index: 3;
+}
+
+.boy-svg {
+    position: absolute;
+    bottom: 0;
+    right: -5%;
+    width: 35%;
+    z-index: 2;
+}
+
+.heart-svg {
+    transform: scaleX(-1);
+    position: absolute;
+    top: 0;
+    left: -5%;
+    width: 30%;
+    z-index: 10;
+}
+
+.stars-svg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    z-index: 4;
+}
+
+.stars2-svg {
+    position: absolute;
+    top: 5%;
+    left: 25%;
+    width: 30%;
+}
+
+.poke-webp {
+    position: absolute;
+    bottom: -5%;
+    left: -5%;
+    z-index: 4;
+    transform: scale(0.95);
+}
+
+.poke2-webp {
+    position: absolute;
+    bottom: 20%;
+    left: 5%;
+    z-index: 5;
+    transform: scale(0.91);
+}
+
+/* .girl-svg img,
+.boy-svg img,
+.heart-svg img,
+.stars-svg img,
+.poke-webp img,
+.poke2-webp img {
+    height: auto;
+    display: block;
+} */
+
+/* .girl-svg {
+    padding: 20% 0 0 20%;
+    display: flex;
+    justify-self: center;
+    width: 50%;
+    z-index: 1;
+}
+
+.boy-svg {
+    z-index: 2;
+} */
+
+/* @media (max-width: 1200px) {
+    body {
+        grid-template-columns: 1fr;
+        grid-template-rows: 70px 1fr;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .image-container {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .auth-buttons {
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        padding: 25px;
+    }
+
+    .welcome-quote h1 {
+        font-size: 2rem;
+    }
+
+    .motivational-quote p {
+        font-size: 1.2rem;
+    }
+
+    .image-box {
+        height: 350px;
+    }
+
+    .welcome-quote,
+    .motivational-quote {
+        padding: 25px;
+    }
+} */
