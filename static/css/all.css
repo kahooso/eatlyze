@@ -1,0 +1,33 @@
+:root {
+    --sidebar-bg: whitesmoke;
+    --header-bg: whitesmoke;
+    --main-bg: #f6ffeb;
+    --quote-bg: #ffc5ed;
+    --primary: #f6abde;
+    --secondary: #c4ea9b;
+    --text-dark: #333;
+    --text-light: #555;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+html {
+    font-size: 16px; 
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--main-bg);
+    color: var(--text-dark);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    min-height: 85vh;
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
